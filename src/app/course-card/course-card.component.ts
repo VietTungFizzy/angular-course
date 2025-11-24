@@ -28,9 +28,23 @@ export class CourseCardComponent implements OnInit {
     
   }
 
+  isImageVisible() {
+    return this.course && this.course.iconUrl;
+  }
+
   onCourseViewed() {
     console.log("Card component - button clicked...");
 
     this.courseEmitter.emit(this.course);
+  }
+
+  cardClasses() {
+    if(this.course.category === 'BEGINNER') {
+      return 'beginner';
+    }
+  }
+
+  cardStyles() {
+    return { 'background-image': 'url(' + this.course.iconUrl + ')' };
   }
 }

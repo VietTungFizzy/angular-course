@@ -1,23 +1,23 @@
 <div class="top-menu">
 
-    <img class="logo"
-         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
+  <img class="logo"
+    src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
-</div>
+  </div>
 
-<div class="courses">
+  <div class="courses">
 
     @for (course of courses; track $index; let count = $count) {
-        <course-card
-            (courseSelected)="onCourseSelected($event)" 
-            [course]="course" 
-            [index]="$index"
-        />
+    <course-card
+      (courseSelected)="onCourseSelected($event)"
+      [course]="course"
+      [index]="$index"
+      />
     }
 
     @empty {
-        <h1>No course found!</h1>
+    <h1>No course found!</h1>
     }
-</div>
+  </div>
 
 
