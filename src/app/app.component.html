@@ -5,19 +5,31 @@
 
   </div>
 
+  <!-- <div *ngFor="let pair of course | keyvalue">
+    {{ pair.key + ': ' + pair.value }}
+  </div> -->
+
   <div class="courses">
 
-    @for (course of courses; track $index; let count = $count) {
-    <course-card
-      (courseSelected)="onCourseSelected($event)"
-      [course]="course"
-      [index]="$index"
-      />
+    @defer {
+      @for (course of courses; track $index; let count = $count) {
+        <course-card
+          (courseSelected)="onCourseSelected($event)"
+          [course]="course"
+          [index]="$index"
+          />
+      }
+
+      @empty {
+      <h1>No course found!</h1>
+      }
     }
 
-    @empty {
-    <h1>No course found!</h1>
-    }
+    <!-- <course-card *ngFor="let course of courses | slice: 0:2; index as i;"
+      (courseSelected)="onCourseSelected($event)"
+      [course]="course"
+      [index]="i+1"
+    ></course-card> -->
   </div>
 
 
