@@ -14,9 +14,10 @@ export class CourseCardComponent implements OnInit {
   })
   course: Course;
 
-  @Input({
-    required: true
-  })
+  // @Input({
+  //   required: true
+  // })
+  @Input()
   index: number;
 
   @Output('courseSelected')
@@ -25,7 +26,7 @@ export class CourseCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    
+
   }
 
   isImageVisible() {

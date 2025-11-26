@@ -1,10 +1,10 @@
 <ng-container *ngIf="course">
     <div class="course-card" [ngClass]="cardClasses()">
         <div class="course-title">
-        {{ index }} {{ course.description }}
+        {{ index || '' }} {{ course.description }}
         </div>
 
-        <img width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage" [src]="course.iconUrl" />
+        <img #courseImage width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage" [src]="course.iconUrl" />
 
         <ng-template #noImage>
             <p>No Image is available.</p>
