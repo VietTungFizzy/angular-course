@@ -9,8 +9,10 @@
   {{ pair.key + ': ' + pair.value }}
 </div> -->
 
-<div style="border: 5px solid red; min-height: 1000px; margin: 10px">
-  <button>Trigger Display</button>
+<div style="border: 5px solid red; min-height: 200px; margin: 10px">
+  <button (click)="onPrefetch()">Trigger Prefetch</button>
+  
+  <button (click)="onDisplay()">Trigger Display</button>
 </div>
 
 <!-- <h1 #title>Trigger viewport</h1> -->
@@ -20,7 +22,7 @@
   <button #display>Trigger Display</button>
 </div> -->
 
-@defer (on interaction(display); prefetch on interaction(prefetch)) {
+@defer (when display; prefetch when performPrefetch) {
   <div class="courses">
 
     @for (course of courses; track $index; let count = $count) {
