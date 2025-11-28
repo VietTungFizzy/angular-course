@@ -38,10 +38,22 @@
   <h2>An error occurred.</h2>
 } -->
 
-<button (click)="onCoursesEdited()">Edit Courses</button>
+<!-- <button (click)="onCoursesEdited()">Edit Courses</button> -->
 
-<div class="courses" #container>
-  <course-card *ngFor="let course of courses"
+<div class="courses" #container *ngIf="courses[0] as course">
+  <!-- <course-card *ngFor="let course of courses"
     (courseSelected)="onCourseSelected($event)" [course]="course"
-  />
+  >
+    <img #courseImage width="300" alt="Angular Logo" [src]="course.iconUrl" />
+  </course-card> -->
+
+  <course-card (courseSelected)="onCourseSelected($event)" [course]="course">
+    <course-image [src]="course.iconUrl"></course-image>
+
+    <div class="course-description">
+      {{ course.longDescription }}
+    </div>
+
+    Edit description: <textarea></textarea>
+  </course-card>
 </div>
