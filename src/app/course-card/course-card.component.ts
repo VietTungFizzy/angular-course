@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, TemplateRef, ViewChild } from '@angular/core';
 import { Course } from '../model/course';
 import { CourseImageComponent } from '../course-image/course-image.component';
 
@@ -8,12 +8,15 @@ import { CourseImageComponent } from '../course-image/course-image.component';
   styleUrl: './course-card.component.css',
   standalone: false
 })
-export class CourseCardComponent implements OnInit, AfterViewInit {
+export class CourseCardComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   @Input({
     required: true
   })
   course: Course;
+
+  @Input()
+  noImageTpl: TemplateRef<any>;
 
   // @Input({
   //   required: true
@@ -24,13 +27,16 @@ export class CourseCardComponent implements OnInit, AfterViewInit {
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();
 
-  @ContentChild(CourseImageComponent, { read: ElementRef })
-  image: ElementRef;
+  @ContentChildren(CourseImageComponent, { read: ElementRef })
+  images: QueryList<ElementRef>;
 
   constructor() {}
 
+  ngAfterContentInit(): void {
+    console.log(this.images)
+  }
+
   ngAfterViewInit(): void {
-    console.log(this.image)
   }
 
   ngOnInit(): void {
